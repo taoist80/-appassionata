@@ -1,3 +1,5 @@
+import MmsWidget from "../components/MmsWidget";
+
 export default function Login() {
   return (
     // Centered member-login card — placeholder for the My Music Staff portal.
@@ -16,39 +18,9 @@ export default function Login() {
         </p>
       </div>
 
+      {/* My Music Staff Student Portal login (official Login.ashx widget). */}
       <div className="card rounded-[18px] border border-base-300 bg-base-100 p-[26px] shadow-[0_12px_30px_rgba(0,0,0,.06)]">
-        <form onSubmit={(e) => e.preventDefault()}>
-          <label className="text-[.82rem] text-[#4A4F57] font-semibold">
-            Email
-            <input
-              type="email"
-              placeholder="you@email.com"
-              className="input w-full mt-1.5 mb-3.5 font-sans"
-            />
-          </label>
-          <label className="text-[.82rem] text-[#4A4F57] font-semibold">
-            Password
-            <input
-              type="password"
-              placeholder="••••••••"
-              className="input w-full mt-1.5 mb-1.5 font-sans"
-            />
-          </label>
-          <div className="text-right mb-4">
-            <a
-              href="#"
-              className="text-[.82rem] text-primary no-underline font-semibold hover:underline"
-            >
-              Forgot password?
-            </a>
-          </div>
-          <button
-            type="submit"
-            className="btn btn-secondary rounded-full w-full font-bold"
-          >
-            Sign in
-          </button>
-        </form>
+        <MmsWidget block="login" useOfficialLoginScript minHeight={360} />
       </div>
 
       <p className="text-[.8rem] text-[#9aa0a8] text-center mt-[18px]">

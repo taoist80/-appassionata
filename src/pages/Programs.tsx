@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import type { ReactNode } from "react";
 import PageHeader from "../components/PageHeader";
 import { Pill } from "../components/typography";
+import BookTrial from "../components/BookTrial";
 
 const CARD_SHADOW =
   "shadow-[0_1px_2px_rgba(0,0,0,.03),0_8px_20px_rgba(0,0,0,.04)]";
@@ -105,12 +105,9 @@ export default function Programs() {
 
       <p className="text-[.95rem] text-[#4A4F57] mt-1.5">
         To explore any of these,{" "}
-        <Link
-          to="/contact"
-          className="text-primary font-bold no-underline hover:underline"
-        >
+        <BookTrial className="inline align-baseline bg-transparent border-0 p-0 m-0 text-primary font-bold cursor-pointer hover:underline">
           register and book a meet-and-greet
-        </Link>
+        </BookTrial>
         .
       </p>
     </article>

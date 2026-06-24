@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { STUDIO } from "../data/site";
+import BookTrial from "./BookTrial";
 
 /**
  * Contextual action tiles shown at the bottom of every page.
@@ -18,13 +18,8 @@ export default function ContextTiles() {
           <p className="text-[.88rem] leading-relaxed mb-3.5 text-[#8a5560]">
             Book a meet-and-greet or trial lesson with Laura.
           </p>
-          {/* TODO(My Music Staff): open the booking widget instead of routing. */}
-          <Link
-            to="/contact"
-            className="btn btn-accent rounded-full btn-sm font-bold no-underline"
-          >
-            Book a trial lesson
-          </Link>
+          {/* Opens the My Music Staff sign-up widget in a modal. */}
+          <BookTrial />
         </div>
 
         {/* 2 — Contact */}

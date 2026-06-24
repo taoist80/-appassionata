@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import type { ReactNode } from "react";
 import PageHeader from "../components/PageHeader";
 import { P, H2 } from "../components/typography";
+import BookTrial from "../components/BookTrial";
 
 function FactCard({ label, value }: { label: string; value: ReactNode }) {
   return (
@@ -49,12 +49,9 @@ export default function MiniMusic() {
 
       <p className="text-[.95rem] text-[#4A4F57] mt-[1.4rem]">
         Registration: non-refundable $25 fee. New families{" "}
-        <Link
-          to="/contact"
-          className="text-primary font-bold no-underline hover:underline"
-        >
+        <BookTrial className="inline align-baseline bg-transparent border-0 p-0 m-0 text-primary font-bold cursor-pointer hover:underline">
           book a meet-and-greet
-        </Link>{" "}
+        </BookTrial>{" "}
         before starting class.
       </p>
     </article>
