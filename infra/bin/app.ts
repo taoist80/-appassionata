@@ -19,9 +19,12 @@ const dns = new DnsStack(app, "AppassionataDnsStack", {
   description: "Appassionata — Route 53 hosted zone (delegate Porkbun NS here)",
 });
 
-// The custom domain (cert + alias records) is gated behind `-c domain=on` so the
-// site can go live on the CloudFront URL before NS delegation has propagated.
-const enableDomain = app.node.tryGetContext("domain") === "on";
+// The custom domain (ACM cert + apex/www alias records) is ON by default now
+// that the zone is delegated and live. A plain `cdk deploy` therefore keeps the
+// domain — pass `-c domain=off` ONLY to deploy without it (e.g. before NS
+// delegation). (Previously this defaulted off, so a flagless deploy tore the
+// domain down; default-on prevents that footgun.)
+const enableDomain = app.node.tryGetContext("domain") !== "off";
 
 new SiteStack(app, "AppassionataSiteStack", {
   env,

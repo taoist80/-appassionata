@@ -41,12 +41,15 @@ Static site on S3 + CloudFront in `infra/` (account `truemark-dev-jgilgen`, us-e
 ```bash
 npm run build
 cd infra
-npx cdk deploy AppassionataSiteStack --require-approval never            # demo (CloudFront URL)
-npx cdk deploy AppassionataSiteStack -c domain=on --require-approval never  # + custom domain (after NS delegation)
+npx cdk deploy AppassionataSiteStack --require-approval never   # custom domain stays ON
 ```
 
-- **Custom domain:** delegate the domain's nameservers (at Porkbun) to the Route 53
-  hosted zone from `AppassionataDnsStack`, then deploy with `-c domain=on`.
+- **Custom domain is ON by default** (ACM cert + apex/www Route 53 aliases). A plain
+  `cdk deploy` preserves it. Pass **`-c domain=off`** only to deploy without the
+  domain (e.g. before NS delegation) — do NOT use it on the live site, it removes
+  the alias records and the apex stops resolving.
+- **Custom domain setup (one-time):** delegate the domain's nameservers (at Porkbun)
+  to the Route 53 hosted zone from `AppassionataDnsStack`, then `cdk deploy` the site stack.
 - **Google Search Console** (domain verification) — pass the token to the DNS stack:
   ```bash
   npx cdk deploy AppassionataDnsStack -c gscToken=<verification-token>
