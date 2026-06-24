@@ -44,7 +44,7 @@ export default function EditorialHome() {
         width={1100}
         height={340}
         fetchPriority="high"
-        className="w-full h-[340px] object-cover rounded-[4px] bg-base-300 mb-11"
+        className="w-full h-[340px] object-cover rounded-[4px] bg-base-300 mb-11 border border-[#EBD9DC]"
       />
 
       <EdP>
@@ -74,6 +74,10 @@ export default function EditorialHome() {
       </EdP>
 
       <figure className="text-center my-12">
+        <span
+          className="block w-12 h-[2px] bg-primary rounded-full mx-auto mb-6"
+          aria-hidden
+        />
         <p className="font-editorial italic font-medium text-[1.7rem] leading-[1.4] text-secondary max-w-[30ch] mx-auto m-0">
           “To play a wrong note is insignificant; to play without passion is
           inexcusable.”

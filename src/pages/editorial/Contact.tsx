@@ -48,7 +48,7 @@ export default function EditorialContact() {
       </div>
 
       <div className="border-t border-[#E7E2DE] pt-8">
-        <h2 className="font-editorial font-semibold text-[1.4rem] text-[#1F2227] mb-4 text-center">
+        <h2 className="font-editorial font-semibold text-[1.4rem] text-secondary mb-4 text-center">
           Send a message
         </h2>
         <MmsWidget block="contact" minHeight={560} />

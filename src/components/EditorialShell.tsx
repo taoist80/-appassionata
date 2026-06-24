@@ -44,11 +44,13 @@ export default function EditorialShell() {
 
   return (
     <div className="font-sans text-[#1F2227] bg-[#FBF7F1] min-h-screen flex flex-col">
-      {/* Top navigation */}
-      <header
-        className="sticky top-0 z-50 flex items-center gap-5 bg-[#FBF7F1]/90 backdrop-blur border-b border-[#E9E2DB]"
-        style={{ padding: narrow ? "12px 20px" : "15px clamp(24px,5vw,56px)" }}
-      >
+      {/* Top navigation — red gradient masthead accent + thin red bottom border */}
+      <header className="sticky top-0 z-50 bg-[#FBF7F1]/90 backdrop-blur border-b-[1.5px] border-primary/70">
+        <div className="h-[3px] bg-gradient-to-r from-secondary via-primary to-accent" />
+        <div
+          className="flex items-center gap-5"
+          style={{ padding: narrow ? "12px 20px" : "15px clamp(24px,5vw,56px)" }}
+        >
         <Link
           to="/"
           className="flex items-center gap-[11px] no-underline shrink-0"
@@ -104,6 +106,7 @@ export default function EditorialShell() {
             &#9776;
           </button>
         )}
+        </div>
       </header>
 
       {/* Mobile dropdown menu */}
@@ -134,19 +137,27 @@ export default function EditorialShell() {
         </div>
       )}
 
-      {/* Reading column */}
+      {/* Reading column on a white "sheet" panel (mat of cream around it) */}
       <main
-        className="grow w-full max-w-[720px] mx-auto"
-        style={{ padding: narrow ? "40px 22px 64px" : "64px 24px 88px" }}
+        className="grow w-full"
+        style={{ padding: narrow ? "22px 14px 48px" : "48px clamp(16px,4vw,48px) 72px" }}
       >
-        <div key={location.pathname}>
-          <Outlet />
+        <div className="max-w-[900px] mx-auto bg-white rounded-[6px] border border-[#EBD9DC] shadow-[0_1px_2px_rgba(122,20,34,.05),0_20px_50px_rgba(122,20,34,.07)] overflow-hidden">
+          <div className="h-[3px] bg-primary" />
+          <div
+            key={location.pathname}
+            style={{ padding: narrow ? "32px 22px 44px" : "56px clamp(28px,6vw,84px) 72px" }}
+          >
+            <Outlet />
+          </div>
         </div>
       </main>
 
       {/* Global footer */}
-      <footer className="text-center border-t border-[#E7E2DE] bg-white px-6 pt-10 pb-12 mt-6">
-        <div className="font-editorial font-semibold text-[1.15rem] text-[#1F2227] mb-2">
+      <footer className="bg-white mt-6">
+        <div className="h-[3px] bg-gradient-to-r from-secondary via-primary to-accent" />
+        <div className="text-center px-6 pt-10 pb-12">
+        <div className="font-editorial font-semibold text-[1.15rem] text-secondary mb-2">
           {STUDIO.name}
         </div>
         <div className="font-sans text-[.88rem] text-[#6b6259] leading-[1.7]">
@@ -173,6 +184,7 @@ export default function EditorialShell() {
           >
             Privacy
           </Link>
+        </div>
         </div>
       </footer>
     </div>

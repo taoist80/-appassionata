@@ -45,7 +45,7 @@ export function EdP({
   );
 }
 
-/** Section heading. */
+/** Section heading — deep maroon with a short red accent rule above it. */
 export function EdH2({
   children,
   className = "",
@@ -55,7 +55,7 @@ export function EdH2({
 }) {
   return (
     <h2
-      className={`font-editorial font-semibold text-[1.7rem] text-[#1F2227] tracking-[-.01em] mb-2 ${className}`}
+      className={`font-editorial font-semibold text-[1.7rem] text-secondary tracking-[-.01em] mb-2 before:content-[''] before:block before:w-9 before:h-[3px] before:bg-primary before:rounded-full before:mb-3 ${className}`}
     >
       {children}
     </h2>
@@ -71,9 +71,15 @@ export function EdTag({ children }: { children: ReactNode }) {
   );
 }
 
-/** Hairline section divider. */
+/** Editorial section divider — hairlines flanking a small red diamond. */
 export function EdHr() {
-  return <hr className="border-0 border-t border-[#E7E2DE] my-10" />;
+  return (
+    <div className="flex items-center justify-center gap-2.5 my-10" aria-hidden>
+      <span className="block w-12 h-px bg-[#E0CBCF]" />
+      <span className="block w-[7px] h-[7px] rotate-45 bg-primary rounded-[1px]" />
+      <span className="block w-12 h-px bg-[#E0CBCF]" />
+    </div>
+  );
 }
 
 /** Centered "Book a trial lesson" CTA (opens the shared booking modal). */
