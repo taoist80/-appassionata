@@ -22,6 +22,16 @@ export class DnsStack extends cdk.Stack {
       comment: "Appassionata studio site — delegate Porkbun NS to these servers",
     });
 
+    // Google Search Console domain verification — pass the token via context:
+    //   cdk deploy AppassionataDnsStack -c gscToken=<token>
+    const gscToken = this.node.tryGetContext("gscToken") as string | undefined;
+    if (gscToken) {
+      new route53.TxtRecord(this, "SearchConsoleVerify", {
+        zone: this.zone, // apex TXT
+        values: [`google-site-verification=${gscToken}`],
+      });
+    }
+
     new cdk.CfnOutput(this, "NameServers", {
       value: cdk.Fn.join(" , ", this.zone.hostedZoneNameServers ?? []),
       description:

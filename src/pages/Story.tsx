@@ -1,9 +1,20 @@
 import PageHeader from "../components/PageHeader";
 import { P, Pill } from "../components/typography";
+import Seo from "../components/Seo";
+import JsonLd from "../components/JsonLd";
+import { breadcrumbLd } from "../data/site";
 
 export default function Story() {
   return (
     <article>
+      <Seo path="/story" />
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "Home", path: "/" },
+          { name: "Laura's Story", path: "/story" },
+        ])}
+      />
+
       <PageHeader
         eyebrow="About"
         title="Laura's Story"
@@ -12,7 +23,10 @@ export default function Story() {
 
       <img
         src="/images/laura-portrait.jpg"
-        alt="Laura Ebersole Francis"
+        alt="Laura Ebersole Francis, piano and cello teacher in Sandy, Utah"
+        width={210}
+        height={252}
+        loading="lazy"
         className="float-right w-[210px] h-[252px] object-cover rounded-2xl bg-base-300 mt-1 mb-4 ml-6"
       />
 

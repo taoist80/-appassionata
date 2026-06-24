@@ -5,7 +5,7 @@ import {
   useState,
   type CSSProperties,
 } from "react";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { NAV_ITEMS, STUDIO } from "../data/site";
 import { Icon } from "./icons";
 import ContextTiles from "./ContextTiles";
@@ -223,6 +223,15 @@ export default function AppShell() {
         <Outlet />
       </div>
       <ContextTiles />
+      <footer className="max-w-[940px] mx-auto mt-10 pt-5 border-t border-base-300 text-center text-[.82rem] text-[#4A4F57]">
+        © {new Date().getFullYear()} {STUDIO.name} · Powered by My Music Staff ·{" "}
+        <Link
+          to="/privacy"
+          className="text-primary font-semibold no-underline hover:underline"
+        >
+          Privacy
+        </Link>
+      </footer>
     </main>
   );
 

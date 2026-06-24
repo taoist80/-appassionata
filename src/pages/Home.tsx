@@ -1,9 +1,32 @@
 import PageHeader from "../components/PageHeader";
 import { P, H2 } from "../components/typography";
+import Seo from "../components/Seo";
+import Faq from "../components/Faq";
+
+const HOME_FAQ = [
+  {
+    q: "What ages do you teach?",
+    a: "Appassionata teaches piano and cello from age 5 through adults — MiniMusic for ages 5–7, group and individual lessons for school-age students, and lessons for adult beginners and returners.",
+  },
+  {
+    q: "Where is the studio located?",
+    a: "The home studio is at 917 East Statice Ave in Sandy, Utah — a block south of Alta View Elementary, close to Alta, Jordan, and Corner Canyon schools.",
+  },
+  {
+    q: "Do you offer online lessons?",
+    a: "Yes. Online lessons are available alongside in-studio lessons, and make-up lessons can be done online when needed.",
+  },
+  {
+    q: "How do I get started?",
+    a: "Book a meet-and-greet or trial lesson with Laura. New families register and schedule through the booking widget on this site.",
+  },
+];
 
 export default function Home() {
   return (
     <article>
+      <Seo path="/" />
+
       <PageHeader
         eyebrow="Piano & Cello Lessons · Sandy, Utah"
         title="Inspiring a Passion for Music"
@@ -13,6 +36,9 @@ export default function Home() {
       <img
         src="/images/hero-piano-keys.jpg"
         alt="Close-up of piano keys"
+        width={1100}
+        height={260}
+        fetchPriority="high"
         className="w-full h-[260px] object-cover rounded-2xl bg-base-300 mb-[26px]"
       />
 
@@ -29,12 +55,15 @@ export default function Home() {
         Studio can offer you.
       </P>
 
-      <H2 className="text-[1.95rem]">Appassionata is in Sandy</H2>
+      <H2 className="text-[1.95rem]">
+        Piano &amp; cello lessons in Sandy, Utah
+      </H2>
       <P>
-        The studio is centrally located near many schools — Alta, Jordan, Corner
-        Canyon, Eastmont Middle, Indian Hills Middle, Glacier Hills, Waterford,
-        Challenger, and Mt. Jordan — plus parks, grocery stores, and rec centers,
-        so families can run errands or drop off siblings during a lesson.
+        The studio is centrally located in Sandy, Utah, near many schools — Alta,
+        Jordan, Corner Canyon, Eastmont Middle, Indian Hills Middle, Glacier
+        Hills, Waterford, Challenger, and Mt. Jordan — plus parks, grocery
+        stores, and rec centers, so families can run errands or drop off siblings
+        during a lesson.
       </P>
 
       <figure className="my-8 pl-[22px] border-l-[3px] border-accent">
@@ -46,6 +75,8 @@ export default function Home() {
           — Ludwig van Beethoven
         </figcaption>
       </figure>
+
+      <Faq items={HOME_FAQ} />
     </article>
   );
 }

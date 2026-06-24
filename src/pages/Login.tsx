@@ -1,13 +1,18 @@
 import MmsWidget from "../components/MmsWidget";
+import Seo from "../components/Seo";
 
 export default function Login() {
   return (
     // Centered member-login card — placeholder for the My Music Staff portal.
     <div className="max-w-[400px] mx-auto mt-[4vh]">
+      {/* Login is a utility page — keep it out of the index. */}
+      <Seo path="/login" noindex />
       <div className="text-center mb-[22px]">
         <img
           src="/images/logo.jpg"
-          alt="Appassionata"
+          alt="Appassionata Piano & Cello Studio logo"
+          width={58}
+          height={58}
           className="w-[58px] h-[58px] rounded-[12px] object-cover bg-white inline-block shadow-[0_4px_14px_rgba(0,0,0,.1)]"
         />
         <h1 className="font-display font-bold text-[2.2rem] text-base-content mt-3.5 mb-0.5">

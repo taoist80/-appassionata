@@ -2,6 +2,40 @@ import type { ReactNode } from "react";
 import PageHeader from "../components/PageHeader";
 import { P, H2 } from "../components/typography";
 import BookTrial from "../components/BookTrial";
+import Seo from "../components/Seo";
+import JsonLd from "../components/JsonLd";
+import { breadcrumbLd } from "../data/site";
+
+const MINIMUSIC_FAQ = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [
+    {
+      "@type": "Question",
+      name: "Would MiniMusic be a good fit for my child?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "MiniMusic suits children ages 5–7 who want to explore music and instruments before committing to individual lessons. No piano at home is needed — all learning happens in class and no practicing is required.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "When and where does MiniMusic meet?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Wednesdays 5:00–6:00 pm at the home studio in Sandy, Utah, a block south of Alta View Elementary.",
+      },
+    },
+    {
+      "@type": "Question",
+      name: "How much is MiniMusic tuition?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "$110 per month, including the activity book and all supplies. It is a 12-month program — a 30-week school year plus a summer session.",
+      },
+    },
+  ],
+};
 
 function FactCard({ label, value }: { label: string; value: ReactNode }) {
   return (
@@ -17,6 +51,16 @@ function FactCard({ label, value }: { label: string; value: ReactNode }) {
 export default function MiniMusic() {
   return (
     <article>
+      <Seo path="/programs/minimusic" />
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "Home", path: "/" },
+          { name: "Programs & Tuition", path: "/programs" },
+          { name: "MiniMusic Class", path: "/programs/minimusic" },
+        ])}
+      />
+      <JsonLd data={MINIMUSIC_FAQ} />
+
       <PageHeader
         eyebrow="Ages 5–7"
         title="MiniMusic Class"

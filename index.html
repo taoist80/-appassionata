@@ -2,13 +2,98 @@
 <html lang="en" data-theme="appassionata">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/jpeg" href="/images/logo.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <meta name="theme-color" content="#7A1422" />
+
+    <!-- Preconnect to Google Fonts (loaded via @import in src/index.css) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- data-default tags are the no-JS fallback. The Seo component sets these
+         per-page, and main.tsx strips the defaults on the client so there is
+         never a duplicate. Non-JS crawlers keep the defaults in the served HTML. -->
+    <title data-default>Piano & Cello Lessons in Sandy, Utah | Appassionata</title>
     <meta
       name="description"
-      content="Appassionata Piano & Cello Studio — piano and cello lessons in Sandy, Utah, with Laura Ebersole Francis. Inspiring a passion for music."
+      data-default
+      content="Appassionata Piano & Cello Studio in Sandy, Utah — piano and cello lessons for all ages with Laura Ebersole Francis. Inspiring a passion for music."
     />
-    <title>Piano and Cello Lessons in Sandy, Utah · Appassionata</title>
+    <link rel="canonical" data-default href="https://appassionata-piano.pro/" />
+
+    <!-- Open Graph / Twitter defaults -->
+    <meta property="og:type" data-default content="website" />
+    <meta property="og:site_name" data-default content="Appassionata Piano & Cello Studio" />
+    <meta property="og:title" data-default content="Piano & Cello Lessons in Sandy, Utah | Appassionata" />
+    <meta
+      property="og:description"
+      data-default
+      content="Piano and cello lessons for all ages in Sandy, Utah, with Laura Ebersole Francis."
+    />
+    <meta property="og:url" data-default content="https://appassionata-piano.pro/" />
+    <meta property="og:image" data-default content="https://appassionata-piano.pro/images/og-cover.jpg" />
+    <meta property="og:locale" data-default content="en_US" />
+    <meta name="twitter:card" data-default content="summary_large_image" />
+    <meta name="twitter:title" data-default content="Piano & Cello Lessons in Sandy, Utah | Appassionata" />
+    <meta
+      name="twitter:description"
+      data-default
+      content="Piano and cello lessons for all ages in Sandy, Utah, with Laura Ebersole Francis."
+    />
+    <meta name="twitter:image" data-default content="https://appassionata-piano.pro/images/og-cover.jpg" />
+
+    <!-- Site-wide structured data (always present in raw HTML) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": ["MusicSchool", "LocalBusiness"],
+        "@id": "https://appassionata-piano.pro/#studio",
+        "name": "Appassionata Piano & Cello Studio",
+        "alternateName": "Appassionata",
+        "url": "https://appassionata-piano.pro/",
+        "image": "https://appassionata-piano.pro/images/og-cover.jpg",
+        "logo": "https://appassionata-piano.pro/favicon.png",
+        "telephone": "+1-801-455-5539",
+        "email": "Ljefrancis1990@gmail.com",
+        "priceRange": "$$",
+        "slogan": "Inspiring a Passion for Music",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "917 East Statice Ave",
+          "addressLocality": "Sandy",
+          "addressRegion": "UT",
+          "postalCode": "84094",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 40.5773,
+          "longitude": -111.8502
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Sandy, Utah" },
+          { "@type": "AdministrativeArea", "name": "Salt Lake County, Utah" }
+        ],
+        "sameAs": ["https://www.youtube.com/@appassionatapianostudio3181"],
+        "founder": {
+          "@type": "Person",
+          "name": "Laura Ebersole Francis",
+          "jobTitle": "Piano & Cello Teacher",
+          "alumniOf": "Utah State University",
+          "memberOf": {
+            "@type": "MusicGroup",
+            "name": "Utah Philharmonic Orchestra"
+          }
+        },
+        "knowsAbout": [
+          "Piano lessons",
+          "Cello lessons",
+          "Music theory",
+          "Piano pedagogy"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

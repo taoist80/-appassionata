@@ -1,11 +1,21 @@
 import PageHeader from "../components/PageHeader";
 import { P } from "../components/typography";
-import { STUDIO } from "../data/site";
+import { STUDIO, breadcrumbLd } from "../data/site";
 import MmsWidget from "../components/MmsWidget";
+import Seo from "../components/Seo";
+import JsonLd from "../components/JsonLd";
 
 export default function Contact() {
   return (
     <article>
+      <Seo path="/contact" />
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
+
       <PageHeader eyebrow="Get in touch" title="Contact Laura" />
 
       <P className="leading-[1.75] mb-[22px]">

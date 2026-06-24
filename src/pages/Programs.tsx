@@ -2,6 +2,9 @@ import type { ReactNode } from "react";
 import PageHeader from "../components/PageHeader";
 import { Pill } from "../components/typography";
 import BookTrial from "../components/BookTrial";
+import Seo from "../components/Seo";
+import JsonLd from "../components/JsonLd";
+import { breadcrumbLd } from "../data/site";
 
 const CARD_SHADOW =
   "shadow-[0_1px_2px_rgba(0,0,0,.03),0_8px_20px_rgba(0,0,0,.04)]";
@@ -43,10 +46,18 @@ function Offering({ children }: { children: ReactNode }) {
 export default function Programs() {
   return (
     <article>
+      <Seo path="/programs" />
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "Home", path: "/" },
+          { name: "Programs & Tuition", path: "/programs" },
+        ])}
+      />
+
       <PageHeader
         eyebrow="Lessons"
         title="Programs & Tuition"
-        lede="Music adventures for every age and stage"
+        lede="Music adventures for every age and stage — in Sandy, Utah"
       />
 
       <ProgramCard title="Ages 5–7" tag="First steps">

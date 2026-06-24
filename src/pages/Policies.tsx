@@ -1,5 +1,8 @@
 import type { ReactNode } from "react";
 import PageHeader from "../components/PageHeader";
+import Seo from "../components/Seo";
+import JsonLd from "../components/JsonLd";
+import { breadcrumbLd } from "../data/site";
 
 function PolicyCard({ title, children }: { title: string; children: ReactNode }) {
   return (
@@ -17,6 +20,14 @@ function PolicyCard({ title, children }: { title: string; children: ReactNode })
 export default function Policies() {
   return (
     <article>
+      <Seo path="/policies" />
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "Home", path: "/" },
+          { name: "Studio Policies", path: "/policies" },
+        ])}
+      />
+
       <PageHeader
         eyebrow="Updated July 2025"
         title="Studio Life & Policy"

@@ -33,8 +33,10 @@ export default function BookTrial({
       </button>
 
       <dialog ref={dialogRef} className="modal">
-        <div className="modal-box max-w-2xl p-0 overflow-hidden">
-          <div className="flex items-center justify-between gap-3 px-5 py-3 border-b border-base-300">
+        {/* Flex column + min-h-0 scroll body: reliably scrollable even with a
+            tall cross-origin iframe (the previous layout clipped the form). */}
+        <div className="modal-box max-w-2xl p-0 max-h-[92vh] overflow-hidden flex flex-col">
+          <div className="flex items-center justify-between gap-3 px-5 py-3 border-b border-base-300 shrink-0">
             <h3 className="font-display font-semibold text-[1.2rem] text-secondary m-0">
               Book a trial lesson
             </h3>
@@ -47,11 +49,11 @@ export default function BookTrial({
               </button>
             </form>
           </div>
-          <div className="p-4 max-h-[75vh] overflow-y-auto">
+          <div className="p-4 grow min-h-0 overflow-y-auto overscroll-contain">
             <p className="text-[.9rem] text-[#4A4F57] mb-3">
               Register and book a meet-and-greet or trial lesson with Laura.
             </p>
-            {mounted && <MmsWidget block="signup" minHeight={640} />}
+            {mounted && <MmsWidget block="signup" minHeight={760} />}
           </div>
         </div>
         {/* Click-outside / Esc closes the dialog */}
