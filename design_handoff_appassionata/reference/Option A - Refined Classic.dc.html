@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{background:#FAF7F5}
+  ::selection{background:#F6E7E9}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+</style>
+</helmet>
+<div style="{{ rootStyle }}">
+
+  <sc-if value="{{ narrow }}" hint-placeholder-val="{{ false }}">
+    <header style="{{ topbarStyle }}">
+      <img src="https://www.appassionata-piano.com/Small%20Logo.jpg" alt="" style="width:32px;height:32px;border-radius:6px;object-fit:cover;background:#fff">
+      <span style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.25rem;letter-spacing:.01em">Appassionata</span>
+      <button onClick="{{ toggleDrawer }}" aria-label="Menu" style="margin-left:auto;background:rgba(255,255,255,.16);border:0;color:#fff;font-size:1.3rem;width:42px;height:42px;border-radius:9px;cursor:pointer">&#9776;</button>
+    </header>
+  </sc-if>
+
+  <div style="{{ gridStyle }}">
+
+    <sc-if value="{{ drawerOpen }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ closeDrawer }}" style="{{ scrimStyle }}"></div>
+    </sc-if>
+
+    <nav style="{{ railStyle }}" aria-label="Primary">
+      <div onClick="{{ goHome }}" style="display:flex;align-items:center;gap:11px;cursor:pointer;padding:6px 8px 16px;border-bottom:1px solid rgba(255,255,255,.18);margin-bottom:10px">
+        <img src="https://www.appassionata-piano.com/Small%20Logo.jpg" alt="Appassionata logo" style="width:42px;height:42px;border-radius:9px;object-fit:cover;background:#fff;flex:0 0 auto">
+        <sc-if value="{{ showLabels }}" hint-placeholder-val="{{ true }}">
+          <span style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.2rem;line-height:1.05;color:#fff">Appassionata<span style="display:block;font-family:'Mulish',sans-serif;font-weight:400;font-size:.66rem;opacity:.8;letter-spacing:.12em;text-transform:uppercase;margin-top:3px">Piano &amp; Cello Studio</span></span>
+        </sc-if>
+      </div>
+
+      <sc-for list="{{ nav }}" as="n" hint-placeholder-count="7">
+        <a onClick="{{ n.onClick }}" style="{{ n.style }}" title="{{ n.label }}">
+          <sc-if value="{{ collapsedRail }}" hint-placeholder-val="{{ false }}"><span style="{{ n.icStyle }}">{{ n.ic }}</span></sc-if>
+          <sc-if value="{{ showLabels }}" hint-placeholder-val="{{ true }}"><span>{{ n.label }}</span></sc-if>
+        </a>
+      </sc-for>
+
+      <div style="flex:1"></div>
+
+      <a onClick="{{ goLogin }}" style="{{ loginStyle }}" title="Member Login">
+        <sc-if value="{{ collapsedRail }}" hint-placeholder-val="{{ false }}"><span style="flex:0 0 22px;width:22px;text-align:center;font-size:.85rem;font-weight:700">M</span></sc-if>
+        <sc-if value="{{ showLabels }}" hint-placeholder-val="{{ true }}"><span>Member Login</span></sc-if>
+      </a>
+
+      <sc-if value="{{ canCollapse }}" hint-placeholder-val="{{ true }}">
+        <button onClick="{{ toggleCollapse }}" style="display:flex;align-items:center;gap:12px;justify-content:center;background:rgba(0,0,0,.18);color:#fff;border:0;cursor:pointer;padding:10px;border-radius:10px;font-family:'Mulish',sans-serif;font-size:.8rem;margin-top:6px">
+          <span style="font-size:.85rem">{{ collapseArrow }}</span>
+          <sc-if value="{{ showLabels }}" hint-placeholder-val="{{ true }}"><span>Collapse</span></sc-if>
+        </button>
+      </sc-if>
+    </nav>
+
+    <main style="{{ mainStyle }}">
+      <div style="{{ readingStyle }}" key="{{ page }}">
+
+        <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+          <p style="text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;color:#9E1B2F;font-weight:700;margin:0 0 10px">Piano &amp; Cello Lessons · Sandy, Utah</p>
+          <h1 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:clamp(2.6rem,4.4vw,3.7rem);line-height:1.04;margin:0 0 4px;color:#1F2227;letter-spacing:.005em">Inspiring a Passion for Music</h1>
+          <p style="font-size:1.15rem;color:#7A1422;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-weight:500;margin:0 0 24px">Welcome to the studio of Laura Ebersole Francis</p>
+          <img src="https://www.appassionata-piano.com/istockphoto-472367422-170667a%20(1).jpg?Width=1200&Height=460" alt="Piano keys" style="width:100%;height:260px;object-fit:cover;border-radius:18px;background:#eee;margin:0 0 26px">
+          <p style="font-size:1.06rem;line-height:1.78;margin:0 0 1.1rem;color:#2a2d33">I <em>love</em> teaching piano &amp; cello. My passion is to inspire students of all ages to love and appreciate music — by helping them discover their individual musical strengths, encouraging creativity, and building the skills that grow confident, excellent musicians.</p>
+          <p style="font-size:1.06rem;line-height:1.78;margin:0 0 1.1rem;color:#2a2d33">Whether the journey leads to orchestra, jazz band, church, a college music degree, or playing just for fun, lessons are an investment into a lifetime of enjoying music. I would love to explore what Appassionata Studio can offer you.</p>
+
+          <h2 style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:1.95rem;color:#7A1422;margin:2.2rem 0 .5rem">Appassionata is in Sandy</h2>
+          <p style="font-size:1.06rem;line-height:1.78;margin:0 0 1.1rem;color:#2a2d33">The studio is centrally located near many schools — Alta, Jordan, Corner Canyon, Eastmont Middle, Indian Hills Middle, Glacier Hills, Waterford, Challenger, and Mt. Jordan — plus parks, grocery stores, and rec centers, so families can run errands or drop off siblings during a lesson.</p>
+
+          <figure style="margin:2rem 0;padding:0 0 0 22px;border-left:3px solid #C9A24B">
+            <p style="font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-weight:500;font-size:1.5rem;line-height:1.4;color:#7A1422;margin:0">"To play a wrong note is insignificant; to play without passion is inexcusable."</p>
+            <figcaption style="font-size:.85rem;color:#4A4F57;margin-top:10px;letter-spacing:.02em">— Ludwig van Beethoven</figcaption>
+          </figure>
+        </sc-if>
+
+        <sc-if value="{{ isStory }}" hint-placeholder-val="{{ false }}">
+          <p style="text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;color:#9E1B2F;font-weight:700;margin:0 0 10px">About</p>
+          <h1 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:clamp(2.4rem,4vw,3.4rem);line-height:1.06;margin:0 0 6px;color:#1F2227">Laura's Story</h1>
+          <p style="font-size:1.15rem;color:#7A1422;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-weight:500;margin:0 0 22px">My Musical Adventure</p>
+          <img src="https://www.appassionata-piano.com/9.jpg?Width=420&Height=520" alt="Laura" style="float:right;width:210px;height:252px;object-fit:cover;border-radius:16px;margin:4px 0 16px 24px;background:#eee">
+          <p style="font-size:1.05rem;line-height:1.78;margin:0 0 1.05rem;color:#2a2d33">Playing songs by ear on a mini electric keyboard, my mom suspected her little girl had some talent and would enjoy piano lessons. My formal lessons began at 7. I'm endlessly grateful that my parents invested their encouragement, time, and finances into 14 years of lessons — and that my mom sat with me almost every day those first few years to guide my practicing.</p>
+          <p style="font-size:1.05rem;line-height:1.78;margin:0 0 1.05rem;color:#2a2d33">At 18, I began teaching piano and knew this was what I wanted to do for the rest of my life. I earned a Bachelor of Music <em>cum laude</em> in Piano Pedagogy from Utah State University. Alongside piano came cello from age 10, and playing in orchestra — now as principal cellist in the Utah Philharmonic Orchestra — is another great love of mine.</p>
+          <p style="font-size:1.05rem;line-height:1.78;margin:0 0 1.05rem;color:#2a2d33">I'm deeply grateful to my professors for helping shape me into the musician and teacher I am today. My musical adventure continues as I begin my 35th year of teaching.</p>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin:1.6rem 0 0">
+            <span style="display:inline-block;background:#F6E7E9;color:#7A1422;font-weight:700;font-size:.82rem;padding:7px 14px;border-radius:999px">35th year teaching</span>
+            <span style="display:inline-block;background:#F6E7E9;color:#7A1422;font-weight:700;font-size:.82rem;padding:7px 14px;border-radius:999px">Principal cellist · Utah Philharmonic</span>
+            <span style="display:inline-block;background:#F6E7E9;color:#7A1422;font-weight:700;font-size:.82rem;padding:7px 14px;border-radius:999px">B.M. Piano Pedagogy, USU</span>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isPrograms }}" hint-placeholder-val="{{ false }}">
+          <p style="text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;color:#9E1B2F;font-weight:700;margin:0 0 10px">Lessons</p>
+          <h1 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:clamp(2.4rem,4vw,3.4rem);line-height:1.06;margin:0 0 6px;color:#1F2227">Programs &amp; Tuition</h1>
+          <p style="font-size:1.15rem;color:#7A1422;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-weight:500;margin:0 0 24px">Music adventures for every age and stage</p>
+
+          <div style="border:1px solid #E7E2DE;border-radius:16px;padding:20px 22px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.03),0 8px 20px rgba(0,0,0,.04);margin:0 0 16px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap"><h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.45rem;color:#7A1422;margin:0">Ages 5–7</h3><span style="font-size:.78rem;color:#9E1B2F;font-weight:700;letter-spacing:.08em;text-transform:uppercase">First steps</span></div>
+            <p style="font-size:1rem;line-height:1.7;margin:.7rem 0 0;color:#2a2d33"><strong>MiniMusic Classes</strong> — a music appreciation and beginning-piano class where all learning happens in class (no piano needed at home). Limited to 5 children. <span style="display:inline-block;background:#F6E7E9;color:#7A1422;font-weight:700;font-size:.78rem;padding:3px 11px;border-radius:999px;margin-left:4px">$110/mo</span></p>
+            <p style="font-size:1rem;line-height:1.7;margin:.6rem 0 0;color:#2a2d33"><strong>PIANO Blast Group Lessons</strong> — weekly 60-min group lessons: skills, playing by ear, theory games, reading music. Up to 6 students. <span style="display:inline-block;background:#F6E7E9;color:#7A1422;font-weight:700;font-size:.78rem;padding:3px 11px;border-radius:999px;margin-left:4px">$125/mo</span></p>
+          </div>
+
+          <div style="border:1px solid #E7E2DE;border-radius:16px;padding:20px 22px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.03),0 8px 20px rgba(0,0,0,.04);margin:0 0 16px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap"><h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.45rem;color:#7A1422;margin:0">Ages 8–11</h3><span style="font-size:.78rem;color:#9E1B2F;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Building skills</span></div>
+            <p style="font-size:1rem;line-height:1.7;margin:.7rem 0 0;color:#2a2d33"><strong>Piano or Cello Blast Group Lessons</strong> — weekly 50-min group lessons, up to 5 students. <span style="display:inline-block;background:#F6E7E9;color:#7A1422;font-weight:700;font-size:.78rem;padding:3px 11px;border-radius:999px;margin-left:4px">$125/mo</span></p>
+            <p style="font-size:1rem;line-height:1.7;margin:.6rem 0 0;color:#2a2d33"><strong>Individual lessons</strong> + monthly performance/theory class, and themed summer mini-camps.</p>
+          </div>
+
+          <div style="border:1px solid #E7E2DE;border-radius:16px;padding:20px 22px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.03),0 8px 20px rgba(0,0,0,.04);margin:0 0 16px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap"><h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.45rem;color:#7A1422;margin:0">11 – College</h3><span style="font-size:.78rem;color:#9E1B2F;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Going deeper</span></div>
+            <p style="font-size:1rem;line-height:1.7;margin:.7rem 0 0;color:#2a2d33">Individual piano or cello lessons (30/45/60 min) with monthly performance/theory class, plus summer camps and workshops. Great for orchestra students and serious musicians preparing for college auditions.</p>
+          </div>
+
+          <div style="border:1px solid #E7E2DE;border-radius:16px;padding:20px 22px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.03),0 8px 20px rgba(0,0,0,.04);margin:0 0 16px">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap"><h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.45rem;color:#7A1422;margin:0">Adults</h3><span style="font-size:.78rem;color:#9E1B2F;font-weight:700;letter-spacing:.08em;text-transform:uppercase">Beginning–intermediate</span></div>
+            <p style="font-size:1rem;line-height:1.7;margin:.7rem 0 0;color:#2a2d33">Start a new hobby or return after a break. Flexible daytime and evening scheduling, 4-lesson packages of 30/45/60-min lessons, tailored to your interests and goals.</p>
+          </div>
+
+          <div style="border:1px solid #E7E2DE;border-radius:16px;padding:20px 22px;background:#FAF7F5;box-shadow:none;margin:0 0 16px">
+            <h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.45rem;color:#7A1422;margin:0 0 .5rem">Specialized adventures</h3>
+            <p style="font-size:.98rem;line-height:1.7;margin:0;color:#2a2d33"><strong>Duo Lessons</strong> ($140/mo) · <strong>Music Matters Homeschool Class</strong> · <strong>Pedagogy Course</strong> for high schoolers · <strong>College Music Degree &amp; Audition Prep</strong>.</p>
+          </div>
+          <p style="font-size:.95rem;color:#4A4F57;margin:.4rem 0 0">To explore any of these, <a onClick="{{ goContact }}" style="color:#9E1B2F;font-weight:700;cursor:pointer;text-decoration:none">register and book a meet-and-greet</a>.</p>
+        </sc-if>
+
+        <sc-if value="{{ isMini }}" hint-placeholder-val="{{ false }}">
+          <p style="text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;color:#9E1B2F;font-weight:700;margin:0 0 10px">Ages 5–7</p>
+          <h1 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:clamp(2.4rem,4vw,3.4rem);line-height:1.06;margin:0 0 6px;color:#1F2227">MiniMusic Class</h1>
+          <p style="font-size:1.15rem;color:#7A1422;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-weight:500;margin:0 0 24px">A joyful first introduction to music — no piano required</p>
+
+          <h2 style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:1.7rem;color:#7A1422;margin:0 0 .5rem">Would MiniMusic be a good fit?</h2>
+          <ul style="font-size:1.02rem;line-height:1.7;color:#2a2d33;margin:0 0 1.4rem;padding-left:1.2rem">
+            <li style="margin:0 0 .4rem">Want your child (5–7) to explore music and instruments before committing to individual lessons?</li>
+            <li style="margin:0 0 .4rem">Want them excited and confident about learning while they're young?</li>
+            <li>Not sure yet if they'll love the piano?</li>
+          </ul>
+          <p style="font-size:1.02rem;line-height:1.75;margin:0 0 1.6rem;color:#2a2d33">If you answered yes, start with MiniMusic. No piano at home is needed — all learning is done in class, and no practicing is required.</p>
+
+          <h2 style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:1.7rem;color:#7A1422;margin:0 0 .8rem">The essentials</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px">
+            <div style="border:1px solid #E7E2DE;border-radius:12px;padding:14px 16px;background:#fff"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#9E1B2F;font-weight:700;margin-bottom:4px">When</div><div style="font-size:.98rem;color:#1F2227">Wednesdays 5:00–6:00 pm</div></div>
+            <div style="border:1px solid #E7E2DE;border-radius:12px;padding:14px 16px;background:#fff"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#9E1B2F;font-weight:700;margin-bottom:4px">Tuition</div><div style="font-size:.98rem;color:#1F2227">$110/mo · book &amp; supplies included</div></div>
+            <div style="border:1px solid #E7E2DE;border-radius:12px;padding:14px 16px;background:#fff"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#9E1B2F;font-weight:700;margin-bottom:4px">Length</div><div style="font-size:.98rem;color:#1F2227">12 months · 30-week school year + summer</div></div>
+            <div style="border:1px solid #E7E2DE;border-radius:12px;padding:14px 16px;background:#fff"><div style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:#9E1B2F;font-weight:700;margin-bottom:4px">Where</div><div style="font-size:.98rem;color:#1F2227">Home studio in Sandy</div></div>
+          </div>
+          <p style="font-size:.95rem;color:#4A4F57;margin:1.4rem 0 0">Registration: non-refundable $25 fee. New families <a onClick="{{ goContact }}" style="color:#9E1B2F;font-weight:700;cursor:pointer;text-decoration:none">book a meet-and-greet</a> before starting class.</p>
+        </sc-if>
+
+        <sc-if value="{{ isPolicies }}" hint-placeholder-val="{{ false }}">
+          <p style="text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;color:#9E1B2F;font-weight:700;margin:0 0 10px">Updated July 2025</p>
+          <h1 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:clamp(2.4rem,4vw,3.4rem);line-height:1.06;margin:0 0 6px;color:#1F2227">Studio Life &amp; Policy</h1>
+          <p style="font-size:1.15rem;color:#7A1422;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-weight:500;margin:0 0 24px">How we partner with families for a lifetime of music</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+            <div style="border:1px solid #E7E2DE;border-radius:14px;padding:18px 20px;background:#fff"><h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.25rem;color:#7A1422;margin:0 0 .4rem">Laura's philosophy</h3><p style="font-size:.95rem;line-height:1.65;margin:0;color:#4A4F57">Sensitive to each learning style, building well-rounded, confident musicians in a patient, encouraging atmosphere across varied genres.</p></div>
+            <div style="border:1px solid #E7E2DE;border-radius:14px;padding:18px 20px;background:#fff"><h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.25rem;color:#7A1422;margin:0 0 .4rem">Parents: a key to success</h3><p style="font-size:.95rem;line-height:1.65;margin:0;color:#4A4F57">Consistent daily practice, weekly notebook checks, a tuned instrument at home, and open communication make all the difference.</p></div>
+            <div style="border:1px solid #E7E2DE;border-radius:14px;padding:18px 20px;background:#fff"><h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.25rem;color:#7A1422;margin:0 0 .4rem">Student expectations</h3><p style="font-size:.95rem;line-height:1.65;margin:0;color:#4A4F57">Note reading, theory, technique, ear training, and musicianship. Arrive prepared, practice 5 days a week, and have fun.</p></div>
+            <div style="border:1px solid #E7E2DE;border-radius:14px;padding:18px 20px;background:#fff"><h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.25rem;color:#7A1422;margin:0 0 .4rem">Tuition</h3><p style="font-size:.95rem;line-height:1.65;margin:0;color:#4A4F57">All-inclusive: classes, parties, camps, materials, and recitals. 12 equal monthly payments based on enrollment, due by the 6th. Pay by cash, check, Zelle, bank bill pay, PayPal, or Venmo.</p></div>
+            <div style="border:1px solid #E7E2DE;border-radius:14px;padding:18px 20px;background:#fff"><h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.25rem;color:#7A1422;margin:0 0 .4rem">Attendance &amp; missed lessons</h3><p style="font-size:.95rem;line-height:1.65;margin:0;color:#4A4F57">Cancel on the studio calendar with 24 hrs notice. Make-up options include Skype lessons, same-week reschedules (when available), and recorded video lessons.</p></div>
+            <div style="border:1px solid #E7E2DE;border-radius:14px;padding:18px 20px;background:#fff"><h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.25rem;color:#7A1422;margin:0 0 .4rem">Performance opportunities</h3><p style="font-size:.95rem;line-height:1.65;margin:0;color:#4A4F57">Two recitals a year (Fall &amp; Spring), with flexible alternatives and performance-anxiety accommodations. Optional festivals and achievement exams.</p></div>
+            <div style="border:1px solid #E7E2DE;border-radius:14px;padding:18px 20px;background:#fff"><h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.25rem;color:#7A1422;margin:0 0 .4rem">Music library</h3><p style="font-size:.95rem;line-height:1.65;margin:0;color:#4A4F57">Borrow 3–5 supplementary books a year — Piano Adventures, Piano Safari, Suzuki, cello music, and digital resources — a big savings for families.</p></div>
+            <div style="border:1px solid #E7E2DE;border-radius:14px;padding:18px 20px;background:#fff"><h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.25rem;color:#7A1422;margin:0 0 .4rem">Lesson evaluation</h3><p style="font-size:.95rem;line-height:1.65;margin:0;color:#4A4F57">An annual written/conference evaluation covers technique, theory, preparation, practice, and attitude.</p></div>
+          </div>
+          <p style="font-size:.9rem;color:#4A4F57;margin:1.4rem 0 0;border-top:1px solid #E7E2DE;padding-top:14px">Summer Session (June–August) has no reschedules or credits. The full written policy is provided to enrolled families.</p>
+        </sc-if>
+
+        <sc-if value="{{ isTestimonials }}" hint-placeholder-val="{{ false }}">
+          <p style="text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;color:#9E1B2F;font-weight:700;margin:0 0 10px">In their words</p>
+          <h1 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:clamp(2.4rem,4vw,3.4rem);line-height:1.06;margin:0 0 24px;color:#1F2227">Testimonials</h1>
+
+          <figure style="display:flex;gap:18px;align-items:flex-start;border:1px solid #E7E2DE;border-radius:16px;padding:22px;background:#fff;margin:0 0 16px;box-shadow:0 8px 20px rgba(0,0,0,.04)">
+            <img src="https://www.appassionata-piano.com/IMG_0336%20(1).jpeg?Width=150&Height=150" alt="Valerie" style="width:74px;height:74px;border-radius:50%;object-fit:cover;flex:0 0 auto;background:#eee">
+            <div>
+              <p style="font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:1.25rem;line-height:1.45;color:#1F2227;margin:0 0 10px">"You've had such an impact on my life. Thank you for showing me what it's like to have a passion for music and inspiring me to pursue it."</p>
+              <figcaption style="font-size:.88rem;color:#4A4F57"><strong style="color:#7A1422">Valerie</strong> · Piano Performance &amp; Pedagogy, Utah State University · Student 2010–2022</figcaption>
+            </div>
+          </figure>
+
+          <figure style="display:flex;gap:18px;align-items:flex-start;border:1px solid #E7E2DE;border-radius:16px;padding:22px;background:#fff;margin:0 0 16px;box-shadow:0 8px 20px rgba(0,0,0,.04)">
+            <img src="https://www.appassionata-piano.com/IMG_0326.jpeg?Width=150&Height=150" alt="Sawyer" style="width:74px;height:74px;border-radius:50%;object-fit:cover;flex:0 0 auto;background:#eee">
+            <div>
+              <p style="font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:1.25rem;line-height:1.45;color:#1F2227;margin:0 0 10px">"I looked forward to lessons every week. You gave me a space to reset and just play the piano. Thank you for everything!"</p>
+              <figcaption style="font-size:.88rem;color:#4A4F57"><strong style="color:#7A1422">Sawyer</strong> · Law &amp; Music, Stanford University · Student 2014–2022</figcaption>
+            </div>
+          </figure>
+          <p style="font-size:.95rem;color:#4A4F57;font-style:italic;text-align:center;margin:1.2rem 0 0">More testimonials coming soon…</p>
+        </sc-if>
+
+        <sc-if value="{{ isContact }}" hint-placeholder-val="{{ false }}">
+          <p style="text-transform:uppercase;letter-spacing:.18em;font-size:.72rem;color:#9E1B2F;font-weight:700;margin:0 0 10px">Get in touch</p>
+          <h1 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:clamp(2.4rem,4vw,3.4rem);line-height:1.06;margin:0 0 6px;color:#1F2227">Contact Laura</h1>
+          <p style="font-size:1.05rem;line-height:1.75;margin:0 0 22px;color:#2a2d33">Please reach out with any questions about me or the studio — I'd love to hear from you.</p>
+
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin:0 0 24px">
+            <a href="tel:+18014555539" style="display:flex;align-items:center;gap:10px;border:1px solid #E7E2DE;border-radius:12px;padding:14px 18px;background:#fff;text-decoration:none;color:#1F2227;font-weight:700"><span style="color:#9E1B2F;font-size:1.1rem">&#9742;</span>(801) 455-5539</a>
+            <a href="mailto:Ljefrancis1990@gmail.com" style="display:flex;align-items:center;gap:10px;border:1px solid #E7E2DE;border-radius:12px;padding:14px 18px;background:#fff;text-decoration:none;color:#1F2227;font-weight:700"><span style="color:#9E1B2F;font-size:1.1rem">&#9993;</span>Email Laura</a>
+          </div>
+
+          <div style="border:1px solid #E7E2DE;border-radius:18px;padding:24px;background:#fff;box-shadow:0 10px 24px rgba(0,0,0,.05)">
+            <h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:1.4rem;color:#7A1422;margin:0 0 16px">Send a message</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 14px">
+              <label style="font-size:.82rem;color:#4A4F57;font-weight:600">Name<input type="text" style="display:block;width:100%;margin-top:6px;padding:11px 13px;border:1px solid #E7E2DE;border-radius:10px;font-size:.95rem;font-family:'Mulish',sans-serif" placeholder="Your name"></label>
+              <label style="font-size:.82rem;color:#4A4F57;font-weight:600">Email<input type="email" style="display:block;width:100%;margin-top:6px;padding:11px 13px;border:1px solid #E7E2DE;border-radius:10px;font-size:.95rem;font-family:'Mulish',sans-serif" placeholder="you@email.com"></label>
+            </div>
+            <label style="font-size:.82rem;color:#4A4F57;font-weight:600">Message<textarea rows="4" style="display:block;width:100%;margin-top:6px;padding:11px 13px;border:1px solid #E7E2DE;border-radius:10px;font-size:.95rem;font-family:'Mulish',sans-serif;resize:vertical" placeholder="Tell me a little about the student and what you're looking for…"></textarea></label>
+            <button style="margin-top:16px;background:linear-gradient(135deg,#7A1422,#9E1B2F);color:#fff;border:0;padding:13px 26px;border-radius:11px;font-weight:700;font-size:.95rem;cursor:pointer;font-family:'Mulish',sans-serif">Send message</button>
+            <p style="font-size:.78rem;color:#9aa0a8;margin:14px 0 0">Contact form powered by My Music Staff.</p>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ isLogin }}" hint-placeholder-val="{{ false }}">
+          <div style="max-width:400px;margin:4vh auto 0">
+            <div style="text-align:center;margin:0 0 22px">
+              <img src="https://www.appassionata-piano.com/Small%20Logo.jpg" alt="Appassionata" style="width:58px;height:58px;border-radius:12px;object-fit:cover;background:#fff;box-shadow:0 4px 14px rgba(0,0,0,.1)">
+              <h1 style="font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:2.2rem;color:#1F2227;margin:14px 0 2px">Member Login</h1>
+              <p style="font-size:.92rem;color:#4A4F57;margin:0">Access your lessons, calendar, and practice resources.</p>
+            </div>
+            <div style="border:1px solid #E7E2DE;border-radius:18px;padding:26px;background:#fff;box-shadow:0 12px 30px rgba(0,0,0,.06)">
+              <label style="font-size:.82rem;color:#4A4F57;font-weight:600">Email<input type="email" style="display:block;width:100%;margin-top:6px;margin-bottom:14px;padding:12px 14px;border:1px solid #E7E2DE;border-radius:10px;font-size:.95rem;font-family:'Mulish',sans-serif" placeholder="you@email.com"></label>
+              <label style="font-size:.82rem;color:#4A4F57;font-weight:600">Password<input type="password" style="display:block;width:100%;margin-top:6px;margin-bottom:6px;padding:12px 14px;border:1px solid #E7E2DE;border-radius:10px;font-size:.95rem;font-family:'Mulish',sans-serif" placeholder="••••••••"></label>
+              <div style="text-align:right;margin:0 0 16px"><a href="#" style="font-size:.82rem;color:#9E1B2F;text-decoration:none;font-weight:600">Forgot password?</a></div>
+              <button style="width:100%;background:linear-gradient(135deg,#7A1422,#9E1B2F);color:#fff;border:0;padding:14px;border-radius:11px;font-weight:700;font-size:.98rem;cursor:pointer;font-family:'Mulish',sans-serif">Sign in</button>
+            </div>
+            <p style="font-size:.8rem;color:#9aa0a8;text-align:center;margin:18px 0 0">Secure member portal powered by My Music Staff.</p>
+          </div>
+        </sc-if>
+
+        <!-- PAGESLOT -->
+
+      </div>
+
+      <section style="max-width:940px;margin:54px auto 0;padding-top:38px;border-top:1px solid #E7E2DE">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;align-items:start">
+          <div style="border:1px solid #ECD9DB;border-radius:16px;padding:20px;background:#FBEEF0;color:#7A1422">
+            <h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:1.28rem;margin:0 0 6px">Start lessons</h3>
+            <p style="font-size:.88rem;line-height:1.55;margin:0 0 14px;color:#8a5560">Book a meet-and-greet or trial lesson with Laura.</p>
+            <a onClick="{{ goContact }}" style="display:inline-block;background:#C9A24B;color:#3a2a00;font-weight:700;text-decoration:none;padding:11px 20px;border-radius:999px;font-size:.88rem;cursor:pointer;font-family:'Mulish',sans-serif">Book a trial lesson</a>
+          </div>
+          <div style="border:1px solid #E7E2DE;border-radius:16px;padding:20px;background:#fff">
+            <h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:1.2rem;margin:0 0 12px;color:#7A1422">Contact</h3>
+            <div style="display:flex;gap:10px;align-items:flex-start;font-size:.9rem;margin:0 0 9px"><span style="color:#9E1B2F">&#9742;</span><a href="tel:+18014555539" style="color:#1F2227;text-decoration:none;font-weight:600">(801) 455-5539</a></div>
+            <div style="display:flex;gap:10px;align-items:flex-start;font-size:.85rem;margin:0 0 9px;word-break:break-all"><span style="color:#9E1B2F">&#9993;</span><a href="mailto:Ljefrancis1990@gmail.com" style="color:#1F2227;text-decoration:none;font-weight:600">Ljefrancis1990@gmail.com</a></div>
+            <div style="display:flex;gap:10px;align-items:flex-start;font-size:.85rem;color:#4A4F57"><span style="color:#9E1B2F">&#9784;</span><span>917 East Statice Ave, Sandy, UT</span></div>
+          </div>
+          <div style="border:1px solid #E7E2DE;border-radius:16px;padding:20px;background:#fff">
+            <h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:1.2rem;margin:0 0 12px;color:#7A1422">Find the studio</h3>
+            <iframe loading="lazy" title="Studio location" src="https://www.google.com/maps?q=917+East+Statice+Avenue+Sandy+UT&output=embed" style="border:0;width:100%;height:150px;border-radius:10px;display:block"></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <aside style="display:none" aria-label="Quick actions">
+      <div style="border:1px solid #ECD9DB;border-radius:14px;padding:20px;background:#FBEEF0;color:#7A1422">
+        <h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:1.4rem;margin:0 0 6px">Start lessons</h3>
+        <p style="font-size:.9rem;line-height:1.55;margin:0 0 16px;color:#8a5560">Book a meet-and-greet or trial lesson with Laura.</p>
+        <a onClick="{{ goContact }}" style="display:inline-block;background:#C9A24B;color:#3a2a00;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:999px;font-size:.9rem;cursor:pointer;font-family:'Mulish',sans-serif">Book a trial lesson</a>
+      </div>
+
+      <div style="padding:2px 2px 0;background:transparent">
+        <h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:1.25rem;margin:0 0 12px;color:#7A1422">Contact</h3>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:.9rem;margin:0 0 9px"><span style="color:#9E1B2F">&#9742;</span><a href="tel:+18014555539" style="color:#1F2227;text-decoration:none;font-weight:600">(801) 455-5539</a></div>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:.86rem;margin:0 0 9px;word-break:break-all"><span style="color:#9E1B2F">&#9993;</span><a href="mailto:Ljefrancis1990@gmail.com" style="color:#1F2227;text-decoration:none;font-weight:600">Ljefrancis1990@gmail.com</a></div>
+        <div style="display:flex;gap:10px;align-items:flex-start;font-size:.86rem;color:#4A4F57"><span style="color:#9E1B2F">&#9784;</span><span>917 East Statice Ave, Sandy, UT</span></div>
+      </div>
+
+      <div style="padding:2px 2px 0;background:transparent">
+        <h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:1.25rem;margin:0 0 12px;color:#7A1422">Find the studio</h3>
+        <iframe loading="lazy" title="Studio location" src="https://www.google.com/maps?q=917+East+Statice+Avenue+Sandy+UT&output=embed" style="border:0;width:100%;height:160px;border-radius:11px"></iframe>
+      </div>
+    </aside>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1180,&quot;height&quot;:820}}">
+class Component extends DCLogic {
+  state = { page: 'home', collapsed: false, drawer: false, w: 1200 };
+
+  componentDidMount() {
+    this._onR = () => this.setState({ w: window.innerWidth });
+    this._onR();
+    window.addEventListener('resize', this._onR);
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this._onR); }
+
+  go(p) { this.setState({ page: p, drawer: false }); try { window.scrollTo(0, 0); } catch (e) {} }
+
+  renderVals() {
+    const T = { brand:'#9E1B2F', strong:'#7A1422', tint:'#F6E7E9', gold:'#C9A24B', ink:'#1F2227', soft:'#4A4F57', line:'#E7E2DE', alt:'#FAF7F5' };
+    const disp = '"Cormorant Garamond",Georgia,serif';
+    const body = '"Mulish",system-ui,Arial,sans-serif';
+    const p = this.state.page;
+    const narrow = this.state.w < 900;
+    const collapsed = this.state.collapsed && !narrow;
+    const showLabels = !collapsed;
+    const railW = collapsed ? 78 : 252;
+
+    const items = [
+      { id:'home', label:'Home', ic:'\u266A' },
+      { id:'story', label:"Laura's Story", ic:'\u2766' },
+      { id:'programs', label:'Programs & Tuition', ic:'\u266B' },
+      { id:'minimusic', label:'MiniMusic · Ages 5\u20137', ic:'\u2022', sub:true },
+      { id:'policies', label:'Studio Policies', ic:'\u00A7' },
+      { id:'testimonials', label:'Testimonials', ic:'\u2665' },
+      { id:'contact', label:'Contact', ic:'\u2709' },
+    ];
+    const nav = items.map(it => {
+      const active = p === it.id;
+      return {
+        label: it.label, ic: it.label.trim().charAt(0).toUpperCase(),
+        onClick: () => this.go(it.id),
+        style: {
+          display:'flex', alignItems:'center', gap:'13px', textDecoration:'none', cursor:'pointer',
+          padding: it.sub ? '7px 12px 7px 30px' : '10px 12px', margin:'1px 0', borderRadius:'10px',
+          fontFamily: body, fontWeight: active ? 700 : 500,
+          fontSize: it.sub ? '0.82rem' : '0.95rem',
+          color: active ? T.strong : 'rgba(255,255,255,.92)',
+          background: active ? '#fff' : 'transparent',
+          justifyContent: showLabels ? 'flex-start' : 'center',
+          whiteSpace:'nowrap', transition:'background .15s',
+        },
+        icStyle: { flex:'0 0 22px', width:'22px', textAlign:'center', fontWeight:700, fontSize: it.sub ? '.78rem' : '.95rem', opacity: active ? 1 : .82 },
+      };
+    });
+
+    const loginActive = p === 'login';
+    const loginStyle = {
+      display:'flex', alignItems:'center', gap:'13px', textDecoration:'none', cursor:'pointer',
+      padding:'10px 12px', borderRadius:'10px', fontFamily: body, fontWeight: loginActive ? 700 : 500,
+      fontSize:'0.95rem', color: loginActive ? T.strong : 'rgba(255,255,255,.92)',
+      background: loginActive ? '#fff' : 'rgba(255,255,255,.08)',
+      justifyContent: showLabels ? 'flex-start' : 'center', whiteSpace:'nowrap',
+    };
+
+    const railBase = {
+      background:`linear-gradient(180deg,${T.strong},${T.brand})`, color:'#fff',
+      display:'flex', flexDirection:'column', padding:'18px 12px', gap:'2px',
+    };
+    const railStyle = narrow
+      ? { ...railBase, position:'fixed', top:0, left:0, width:'252px', height:'100vh',
+          transform: this.state.drawer ? 'translateX(0)' : 'translateX(-100%)',
+          transition:'transform .25s ease', zIndex:60, boxShadow:'0 0 40px rgba(0,0,0,.3)' }
+      : { ...railBase, position:'sticky', top:0, height:'100vh' };
+
+    return {
+      page: p,
+      isHome: p==='home', isStory: p==='story', isPrograms: p==='programs', isMini: p==='minimusic',
+      isPolicies: p==='policies', isTestimonials: p==='testimonials', isContact: p==='contact', isLogin: p==='login',
+      narrow, showLabels, collapsedRail: collapsed, canCollapse: !narrow,
+      drawerOpen: narrow && this.state.drawer,
+      collapseArrow: collapsed ? '\u276F' : '\u276E',
+      nav, loginStyle,
+      goHome: () => this.go('home'), goLogin: () => this.go('login'), goContact: () => this.go('contact'),
+      goPrograms: () => this.go('programs'), goMini: () => this.go('minimusic'),
+      goStory: () => this.go('story'), goPolicies: () => this.go('policies'), goTestimonials: () => this.go('testimonials'),
+      toggleCollapse: () => this.setState(s => ({ collapsed: !s.collapsed })),
+      toggleDrawer: () => this.setState(s => ({ drawer: !s.drawer })),
+      closeDrawer: () => this.setState({ drawer: false }),
+      rootStyle: { fontFamily: body, color: T.ink, background: T.alt, minHeight:'100vh', lineHeight:1.65 },
+      gridStyle: narrow
+        ? { display:'block' }
+        : { display:'grid', gridTemplateColumns:`${railW}px minmax(0,1fr)`, minHeight:'100vh', transition:'grid-template-columns .22s ease' },
+      railStyle,
+      mainStyle: { padding: narrow ? '26px 18px 40px' : '52px clamp(28px,4.5vw,68px)' },
+      readingStyle: { maxWidth:'70ch', margin:'0 auto' },
+      rightStyle: narrow
+        ? { background:'#fff', borderTop:`1px solid ${T.line}`, padding:'28px 18px', display:'flex', flexDirection:'column', gap:'16px' }
+        : { background:'#fff', borderLeft:`1px solid ${T.line}`, padding:'52px 24px', display:'flex', flexDirection:'column', gap:'16px' },
+      topbarStyle: { display:'flex', alignItems:'center', gap:'12px', background:T.strong, color:'#fff', padding:'10px 16px', position:'sticky', top:0, zIndex:50 },
+      scrimStyle: { position:'fixed', inset:0, background:'rgba(0,0,0,.45)', zIndex:55 },
+    };
+  }
+}
+</script>
+</body>
+</html>

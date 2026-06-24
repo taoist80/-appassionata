@@ -1,0 +1,108 @@
+/* Fonts — Source Serif 4 (display) + Mulish (body/UI) */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Mulish:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Custom brand theme */
+@plugin "daisyui/theme" {
+  name: "appassionata";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+
+  --color-base-100: #FFFFFF;   /* surface */
+  --color-base-200: #FAF7F5;   /* app background (warm off-white) */
+  --color-base-300: #E7E2DE;   /* hairlines / borders */
+  --color-base-content: #1F2227; /* ink */
+
+  --color-primary: #9E1B2F;            /* brand red (AA-safe on white) */
+  --color-primary-content: #FFFFFF;
+  --color-secondary: #7A1422;          /* deep maroon */
+  --color-secondary-content: #FFFFFF;
+  --color-accent: #C9A24B;             /* gold */
+  --color-accent-content: #3A2A00;
+  --color-neutral: #1F2227;
+  --color-neutral-content: #FFFFFF;
+
+  --color-info: #0F62FE;
+  --color-success: #1F8A5B;
+  --color-warning: #C9A24B;
+  --color-error: #BF2020;
+
+  --radius-selector: 0.625rem;  /* nav items, small controls */
+  --radius-field: 0.625rem;     /* inputs, buttons */
+  --radius-box: 1rem;           /* cards/tiles */
+  --border: 1px;
+}
+
+@theme {
+  --font-display: "Source Serif 4", Georgia, serif;
+  --font-sans: "Mulish", system-ui, sans-serif;
+}
+
+html, body, #root { height: 100%; }
+body {
+  font-family: var(--font-sans);
+  background: var(--color-base-200);
+}
+
+::selection { background: #F6E7E9; }
+
+/* Visible focus ring (accessibility) */
+:focus-visible {
+  outline: 3px solid #0F62FE;
+  outline-offset: 2px;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* --- Navigation rail ------------------------------------------------------ */
+/* Hover/active states need real CSS (inline styles can't express :hover and
+   would also out-specify class rules), so the rail item visuals live here. */
+
+.rail-surface {
+  background: linear-gradient(180deg, #7A1422, #9E1B2F);
+  color: #fff;
+}
+
+.rail-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  text-decoration: none;
+  margin: 1px 0;
+  padding: 10px 12px;
+  border-radius: var(--radius-selector);
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.92);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.rail-item:hover { background: rgba(255, 255, 255, 0.12); }
+.rail-item.is-active,
+.rail-item.is-active:hover {
+  background: #fff;
+  color: #7A1422;
+  font-weight: 700;
+}
+
+.rail-item--sub { padding: 7px 12px 7px 30px; font-size: 0.82rem; }
+
+.rail-item--login { background: rgba(255, 255, 255, 0.08); }
+.rail-item--login:hover { background: rgba(255, 255, 255, 0.12); }
+.rail-item--login.is-active { background: #fff; }
+
+/* Collapsed rail: center every item and drop the sub-item indent. */
+.rail--collapsed .rail-item,
+.rail--collapsed .rail-item--sub {
+  justify-content: center;
+  padding: 10px 12px;
+}

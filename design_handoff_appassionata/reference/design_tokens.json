@@ -1,0 +1,89 @@
+{
+  "$meta": {
+    "source": "https://www.appassionata-piano.com",
+    "captured": "2026-06-23",
+    "platform": "My Music Staff hosted website widget (Website Template 1)",
+    "note": "Values extracted from the live rendered DOM (computed styles). Colors are the de-facto palette in use; the redesign palette below is a cleaned, accessible refinement."
+  },
+
+  "current": {
+    "color": {
+      "brand_red":      { "value": "#BF2020", "rgb": "191,32,32",  "usage": "Top navigation bar background, primary brand color" },
+      "brand_maroon":   { "value": "#831822", "rgb": "131,24,34",  "usage": "Dark red accent / emphasis text" },
+      "accent_red_alt": { "value": "#B8312F", "rgb": "184,49,47",  "usage": "Secondary red accent" },
+      "pink_tint":      { "value": "#F8D4D7", "rgb": "248,212,215", "usage": "Light pink background block" },
+      "text_body":      { "value": "#212529", "rgb": "33,37,41",   "usage": "Primary body text (Bootstrap default)" },
+      "text_heading":   { "value": "#222222", "rgb": "34,34,34",   "usage": "Hero / H1 heading text" },
+      "text_on_red":    { "value": "#FFFFFF", "rgb": "255,255,255", "usage": "Nav labels and headings over red" },
+      "link_blue":      { "value": "#0895D6", "rgb": "8,149,214",  "usage": "Inline link color" },
+      "gray_rule":      { "value": "#D9D9D9", "rgb": "217,217,217", "usage": "Dividers / light gray block" },
+      "white":          { "value": "#FFFFFF" },
+      "black":          { "value": "#000000" }
+    },
+    "typography": {
+      "heading_family": "\"Playfair Display\", serif",
+      "body_family": "\"Inter Variable\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "legacy_widget_family": "\"Times New Roman\", serif",
+      "scale_px": {
+        "h1_hero": 48,
+        "h2_section": 32,
+        "h2_card": 28,
+        "nav_item": 16,
+        "body": 16,
+        "small": 14,
+        "subhead": 20,
+        "h2_alt": 24
+      },
+      "weights": { "nav": 600, "heading": 700, "body": 400 }
+    },
+    "layout": {
+      "structure": "Single centered column",
+      "nav": "Horizontal top bar, logo at left, 7 text links on red background",
+      "hero": "Full-width banner image (~1425 x 623 on desktop)",
+      "content_alignment": "Centered, generous side gutters",
+      "footer": "Centered: © 2026 Appassionata Piano & Cello Studio · Powered by My Music Staff"
+    }
+  },
+
+  "redesign": {
+    "$intent": "Three-column layout: collapsible left nav rail, centered primary reading column, contextual right rail. Keep the studio's elegant serif + warm red identity; modernize with more whitespace, accessible contrast, and card-based sections.",
+    "color": {
+      "--brand":          "#9E1B2F",
+      "--brand-strong":   "#7A1422",
+      "--brand-tint":     "#F6E7E9",
+      "--accent-gold":    "#C9A24B",
+      "--ink":            "#1F2227",
+      "--ink-soft":       "#4A4F57",
+      "--surface":        "#FFFFFF",
+      "--surface-alt":    "#FAF7F5",
+      "--line":           "#E7E2DE",
+      "--link":           "#9E1B2F",
+      "--focus":          "#0F62FE",
+      "$note": "Brand red darkened slightly to #9E1B2F so white text meets WCAG AA (contrast ~6.0:1). Original #BF2020 fails AA for small white text (~4.0:1)."
+    },
+    "typography": {
+      "--font-display": "\"Playfair Display\", Georgia, serif",
+      "--font-body": "\"Inter\", system-ui, -apple-system, \"Segoe UI\", Roboto, Arial, sans-serif",
+      "scale_rem": {
+        "display": "3rem",
+        "h1": "2.25rem",
+        "h2": "1.625rem",
+        "h3": "1.25rem",
+        "body": "1.0625rem",
+        "small": "0.875rem"
+      },
+      "line_height": { "headings": 1.2, "body": 1.65 },
+      "measure_primary_col": "68ch"
+    },
+    "spacing_px": { "xs": 4, "sm": 8, "md": 16, "lg": 24, "xl": 40, "2xl": 64 },
+    "radius_px": { "sm": 6, "md": 12, "lg": 20 },
+    "shadow": { "card": "0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06)" },
+    "grid": {
+      "columns": "[left] auto [main] minmax(0,1fr) [right] 320px",
+      "left_nav_expanded": "248px",
+      "left_nav_collapsed": "72px",
+      "right_rail": "320px",
+      "breakpoints_px": { "mobile_max": 767, "tablet_max": 1024, "desktop_min": 1025 }
+    }
+  }
+}
