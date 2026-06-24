@@ -9,6 +9,7 @@ import { Link, NavLink, Outlet, useLocation } from "react-router-dom";
 import { NAV_ITEMS, STUDIO } from "../data/site";
 import { Icon } from "./icons";
 import ContextTiles from "./ContextTiles";
+import LayoutToggle from "./LayoutToggle";
 
 const RAIL_EXPANDED = 252;
 const RAIL_COLLAPSED = 78;
@@ -114,6 +115,12 @@ function RailContent({
           {showLabels && <span>Member Login</span>}
         </NavLink>
       </div>
+
+      {showLabels && (
+        <div className="flex justify-center mt-2">
+          <LayoutToggle tone="dark" />
+        </div>
+      )}
 
       {showCollapseControl && (
         <button

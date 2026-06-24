@@ -59,6 +59,17 @@ export const NAV_ITEMS: NavItem[] = [
   { to: "/contact", label: "Contact", icon: "contact" },
 ];
 
+// Top-nav items for the Editorial layout (relabeled; MiniMusic folds into
+// Programs, Privacy lives in the footer).
+export const EDITORIAL_NAV: { to: string; label: string; end?: boolean }[] = [
+  { to: "/", label: "Home", end: true },
+  { to: "/story", label: "Laura's Story" },
+  { to: "/programs", label: "Programs", end: true },
+  { to: "/policies", label: "Studio Life" },
+  { to: "/testimonials", label: "Testimonials" },
+  { to: "/contact", label: "Contact" },
+];
+
 /** Build a BreadcrumbList JSON-LD object from an ordered list of crumbs. */
 export function breadcrumbLd(items: { name: string; path: string }[]) {
   return {

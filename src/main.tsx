@@ -2,6 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App.tsx";
+import { LayoutProvider } from "./layout/LayoutContext.tsx";
 import "./index.css";
 
 // Per-page <Seo> owns title/description/canonical/OG. Remove the static
@@ -12,7 +13,9 @@ document.querySelectorAll("head [data-default]").forEach((el) => el.remove());
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <App />
+      <LayoutProvider>
+        <App />
+      </LayoutProvider>
     </BrowserRouter>
   </StrictMode>,
 );
